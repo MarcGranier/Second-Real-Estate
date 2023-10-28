@@ -7,6 +7,15 @@
 		"hashedpassword",
 		"Perc",
 		"persistor",
-		"Signin"
-	]
+		"Signin",
+		"updateuser"
+	],
+	"cSpell.customDictionaries": {
+		"custom-dictionary-workspace": {
+			"name": "custom-dictionary-workspace",
+			"path": "${workspaceFolder:Second-Real-Estate 2}/.cspell/custom-dictionary-workspace.txt",
+			"addWords": true,
+			"scope": "workspace"
+		}
+	}
 }
