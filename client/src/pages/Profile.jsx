@@ -15,11 +15,12 @@ import {
 
 export default function Profile() {
 	const fileRef = useRef(null);
-	const { currentUser } = useSelector((state) => state.user);
+	const { currentUser, loading, error } = useSelector((state) => state.user);
 	const [file, setFile] = useState(undefined);
 	const [filePerc, setFilePerc] = useState(0);
 	const [fileUploadError, setFileUploadError] = useState(false);
 	const [formData, setFormData] = useState({});
+	const [updateSuccess, setUpdateSuccess] = useState(false);
 	const dispatch = useDispatch();
 
 	//firebase storage
@@ -80,6 +81,7 @@ export default function Profile() {
 			}
 
 			dispatch(updateUserSuccess(data));
+			setUpdateSuccess(true);
 		} catch (error) {
 			dispatch(updateUserFailure(error.message));
 		}
@@ -132,7 +134,7 @@ export default function Profile() {
 					onChange={handleChange}
 				/>{' '}
 				<input
-					type='text'
+					type='password'
 					placeholder='password'
 					onChange={handleChange}
 					id='password'
@@ -146,6 +148,10 @@ export default function Profile() {
 				<span className='text-red-700 cursor-pointer'>Delete Account</span>
 				<span className='text-red-700 cursor-pointer'>Sign out</span>
 			</div>
+			<p className='text-red-700 mt-5'>{error ? error : ''}</p>
+			<p className='text-green-700 mt-5'>
+				{updateSuccess ? 'User updated successfully!' : ''}
+			</p>
 		</div>
 	);
 }
