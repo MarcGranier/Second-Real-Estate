@@ -1,5 +1,6 @@
 import Listing from '../models/listing.model.js';
 import { errorHandler } from '../utils/error.js';
+import mongoose from 'mongoose';
 
 export const createListing = async (req, res, next) => {
 	try {
@@ -30,6 +31,9 @@ export const deleteListing = async (req, res, next) => {
 };
 
 export const updateListing = async (req, res, next) => {
+	if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+		return next(errorHandler(400, 'Invalid Listing ID format!'));
+	}
 	const listing = await Listing.findById(req.params.id);
 	if (!listing) {
 		console.log(listing, 'Breaks here');
