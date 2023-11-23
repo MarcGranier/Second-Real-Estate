@@ -128,7 +128,7 @@ export default function Listing() {
 							</li>
 							<li className='flex items-center gap-1 whitespace-nowrap'>
 								<FaParking className='text-xl' />
-								{listing.parking ? 'Parking snapshot' : 'No Parking'}
+								{listing.parking ? 'Parking shot' : 'No Parking'}
 							</li>
 							<li className='flex items-center gap-1 whitespace-nowrap'>
 								<FaChair className='text-xl' />
@@ -138,7 +138,7 @@ export default function Listing() {
 						{currentUser && listing.userRef !== currentUser._id && !contact && (
 							<button
 								onClick={() => setContact(true)}
-								className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'
+								className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-90 p-3'
 							>
 								Contact landlord
 							</button>
